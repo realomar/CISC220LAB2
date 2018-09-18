@@ -19,7 +19,7 @@ using namespace std;
 void addressDemo();   // function 1
 void plusFour(int x); // function 2
 int randFifty();    // function 3
-void addressCuber();  // function 4
+void addressCuber();  // function 4 [incomplete]
 
 
 
@@ -36,9 +36,9 @@ int main(){
 
 	cout << "randFifty return value and address: ";
 	x = randFifty();
-	cout << "local variable return value and address: " << x << ", " << &x << endl;
+	cout << "Local variable return value and address: " << x << ", " << &x << endl;
 
-
+	//continue from here
 
 	return 0; // ends main function
 }

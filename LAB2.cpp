@@ -42,11 +42,11 @@ int main(){
 	x = randFifty();
 	cout << "Local variable return value and address: " << x << ", " << &x << endl;
 	stars();
-	cout << "Probelm 4:" << endl;
+	cout << "Problem 4:" << endl;
 	int f = 5;
 	cout << "Value of integer: " << f << endl;
 	cout << "Address of integer: " << &f << endl;
-	addressCuber(*f);
+	addressCuber(*f); // TODO: fix this function call.
 	
 	//continue from here
 

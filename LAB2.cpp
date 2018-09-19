@@ -1,5 +1,5 @@
 /*
- * CISC220 LAB 1
+ * CISC220 LAB 2
  * Debra Yarrington
  *
  * Created on: Sep something, 2018
@@ -12,7 +12,7 @@
  */
 #include <iostream> //imports input/output
 #include <stdlib.h> //includes std library
-#include <math.h>
+#include <cmath>
 #include <string>
 using namespace std;
 
@@ -20,7 +20,7 @@ int stars(); //stars function
 void addressDemo();   // function 1
 void plusFour(int x); // function 2
 int randFifty();    // function 3
-void addressCuber();  // function 4 [incomplete]
+void addressCuber(int &a);  // function 4 [incomplete]
 
 
 
@@ -41,7 +41,13 @@ int main(){
 	cout << "randFifty return value and address: ";
 	x = randFifty();
 	cout << "Local variable return value and address: " << x << ", " << &x << endl;
-
+	stars();
+	cout << "Probelm 4:" << endl;
+	int f = 5;
+	cout << "Value of integer: " << f << endl;
+	cout << "Address of integer: " << &f << endl;
+	addressCuber(*f);
+	
 	//continue from here
 
 	return 0; // ends main function
@@ -69,6 +75,12 @@ int randFifty(){ // Problem 3, takes no parameters, returns a random int from 0 
 	return j;
 }
 
+void addressCuber(int *a){ // Problem 4, calls input int by pointer and cubes it.
+	*a = pow(*a,3);
+	cout << "Value at the address: " << a << endl;
+	cout << "Address in the parameter: " << *a << endl;
+	cout << "Address of the parameter: " << &a<< endl;
+}
 
 //end of lab 2
 

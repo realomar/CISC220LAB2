@@ -16,6 +16,7 @@
 #include <string>
 using namespace std;
 
+int stars(); //stars function
 void addressDemo();   // function 1
 void plusFour(int x); // function 2
 int randFifty();    // function 3
@@ -24,9 +25,12 @@ void addressCuber();  // function 4 [incomplete]
 
 
 int main(){
+	stars();
+	cout << "Problem 1:"<< endl;
 	cout << "Value and address of a variable: ";
 	addressDemo();
-
+	stars();
+	cout <<"Problem 2:" <<endl;
 	cout << "Call by value demo. Making variable value 10, then passing to a function that adds 4." << endl;
 	int x = 10;
 	cout << "Original variable value and address: ";
@@ -43,22 +47,28 @@ int main(){
 	return 0; // ends main function
 }
 
-void addressDemo(){
-	// prints the value and the address of an int.
-	int i = 1;
+int stars(){ //prints out a line of stars to differentiate between different questions
+	cout << "***********************************" << endl; // prints stars
+	return 0; //dummy return statement
+}
+
+void addressDemo(){ //Problem 1 prints the value and the address of an int.
+	int i = 5;
 	cout << i << ", " << &i << endl;
 }
 
-void plusFour(int x){
-	// prints the value and the address of parameter int, plus 4.
+void plusFour(int x){ //Problem 2,takes one integer parameter, prints the value and the address of that int parameter, then it adds 4 to the value of the integer.This function uses the call by value function call.
 	x += 4;
 	cout << x << ", " << &x << endl;
 }
 
-int randFifty(){
-	// returns a random int from 0 to 49, and prints its value and address.
+int randFifty(){ // Problem 3, takes no parameters, returns a random int from 0 to 49, and prints its value and address.
 	int j;
 	j = rand() % 50;
 	cout << j << ", " << &j << endl;
 	return j;
 }
+
+
+//end of lab 2
+

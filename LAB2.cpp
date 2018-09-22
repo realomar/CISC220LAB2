@@ -20,7 +20,7 @@ int stars(); //stars function
 void addressDemo();   // function 1
 void plusFour(int x); // function 2
 int randFifty();    // function 3
-void addressCuber(int &a);  // function 4 [incomplete]
+void addressCuber(int *a);  // function 4 [incomplete]
 
 
 
@@ -44,9 +44,10 @@ int main(){
 	stars();
 	cout << "Problem 4:" << endl;
 	int f = 5;
+	int *add = &f;
 	cout << "Value of integer: " << f << endl;
-	cout << "Address of integer: " << &f << endl;
-	addressCuber(*f); // TODO: fix this function call.
+	cout << "Address of integer: " << &add << endl;
+	addressCuber(add);
 	
 	//continue from here
 
@@ -75,11 +76,12 @@ int randFifty(){ // Problem 3, takes no parameters, returns a random int from 0 
 	return j;
 }
 
-void addressCuber(int *a){ // Problem 4, calls input int by pointer and cubes it.
-	*a = pow(*a,3);
-	cout << "Value at the address: " << a << endl;
-	cout << "Address in the parameter: " << *a << endl;
-	cout << "Address of the parameter: " << &a<< endl;
+void addressCuber(int *a){ // Problem 4, calls input int by pointer and cubes it. Function call is call by pointer.
+	cout <<*a << endl;
+	*a = (*a) * (*a) * (*a) ;
+	cout << "Value at the address: " << *a << endl;
+	cout << "Address in the parameter: " << &a << endl;
+	//cout << "Address of the parameter: " << &a<< endl;
 }
 
 //end of lab 2

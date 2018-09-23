@@ -31,6 +31,7 @@ bool swapNumbers8a (int &a, int &b); // function for problem 8a
 void loop20times8b(); //function for problem 8b
 void arrayRandomPrint(int length, int &x); //function for problem 8
 void arrayRandomPrintReverse(int length); //function for problem 9
+void arrayRandSelect(int length, int range); //function for problem 10
 
 
 
@@ -164,6 +165,23 @@ int main(){
 	arrayRandomPrintReverse(15); //array of length 15
 	cout << "" << endl;
 	cout << "" << endl;
+	stars();
+	cout<< "Problem 10 first test case:" << endl;
+	cout << "" <<endl;
+	arrayRandSelect(10, 21); //array of length 10 with range of values from 0 to 20 (including 20).
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout<< "Problem 10 second test case:" << endl;
+	cout << "" <<endl;
+	arrayRandSelect(20, 41); //array of length 20 with range of values from 0 to 40 (including 40).
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout<< "Problem 10 third test case:" << endl;
+	cout << "" <<endl;
+	arrayRandSelect(30, 51); //array of length 30 with range of values from 0 to 50 (including 50).
+	cout << "" <<endl;
+	cout << "" <<endl;
+
 
 	//continue from here
 
@@ -296,5 +314,40 @@ void arrayRandomPrintReverse(int length){ //Problem 9, returns nothing, takes on
 	}
 }
 
+void arrayRandSelect(int length, int range){ //Problem 10, takes 2 integer parameters, one for the length of the array, one for the range of the randomly generate values. Returns nothing.
+	int arr[length];
+	cout << "Original array: " << endl;
+	cout << "" << endl;
+	for(int i = 0; i <length; i++){
+		arr[i] = rand() % range;
+		cout <<arr[i]<< ", ";
+	}
+
+	int y;
+	int i;
+	cout <<""<<endl;
+	cout << "" <<endl;
+	cout<<"The smallest values in the array, as we traverse through the array:" <<endl;
+	cout << "" << endl;
+	for (i = 0 ; i<length ; i++){
+		if(i == 0){
+			y = arr[i];
+			cout << arr[i]<< ", ";
+			arr[i] = range + 1;
+		}
+		else if (arr[i]<=y){
+			cout << arr[i] << ", ";
+			y = arr[i];
+			arr[i] = range + 1;
+		}
+	}
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout <<"Now printing out the list after modifying the smallest numbers in it:" << endl;
+	cout << "" << endl;
+	for(int i = 0; i <length; i++){
+		cout <<arr[i]<< ", ";
+	}
+}
 //end of lab 2
 

@@ -32,8 +32,12 @@ void loop20times8b(); //function for problem 8b
 void arrayRandomPrint(int length, int &x); //function for problem 8
 void arrayRandomPrintReverse(int length); //function for problem 9
 void arrayRandSelect(int length, int range); //function for problem 10
-
-
+int* createVariableStack(); //function for problem 11
+void arrayPrint(int b[], int length); //function for problem 12
+int* arrayLengthHighLowGenerator(int *length, int *high, int *low); //function for problem 13
+int* arrayOnStack(int length); //function for problem 14
+void arrayIntAddress(int arr[], int length); //function for problem 15
+void arrayDoubleAddress(double arr[], int length); //function for problem 16
 
 int main(){
 	srand(time(NULL));
@@ -124,7 +128,7 @@ int main(){
 	cout << "" << endl;
 	stars();
 	cout << "" << endl;
-	cout << "Problem 8c test case 1:" << endl;
+	cout << "Problem 8 test case 1:" << endl;
 	cout << "" << endl;
 	int smallestNumber = -1;
 	arrayRandomPrint(10, smallestNumber); //length of array is 10 for the first test case
@@ -133,7 +137,7 @@ int main(){
 	cout << "" << endl;
 	cout << "" << endl;
 	cout << "" << endl;
-	cout << "Problem 8c test case 2:" << endl;
+	cout << "Problem 8 test case 2:" << endl;
 	smallestNumber = -1;
 	cout << "" << endl;
 	arrayRandomPrint(30, smallestNumber); //length of array is 30 for the second test case
@@ -142,7 +146,7 @@ int main(){
 	cout << "" << endl;
 	cout << "" << endl;
 	cout << "" << endl;
-	cout << "Problem 8c test case 3:" << endl;
+	cout << "Problem 8 test case 3:" << endl;
 	smallestNumber = -1;
 	cout << "" << endl;
 	arrayRandomPrint(50, smallestNumber); //length of array is 50 for the third test case
@@ -181,15 +185,165 @@ int main(){
 	arrayRandSelect(30, 51); //array of length 30 with range of values from 0 to 50 (including 50).
 	cout << "" <<endl;
 	cout << "" <<endl;
-
-
+	stars();
+	cout<<"Problem 11:"<< endl;
+	int* stackVariable = createVariableStack();
+	//cout<< "address of the variable in stack is: " << stackVariable<< endl; //will print out 0. So it won't work. That is because after you leave the scope of a function everything decalred in the function will become garbage. So the value doesn't exist in that memory address now and so the address is 0 (doesn't exist) and if you try to get the value the program won't compile because the value doesn't exist anymore.
+	//cout<< "value of the variable in stack is: " << **stackVariable<< endl;
+	cout << "Getting the address of the variable using a reference will print out 0. So it won't work. That is because after you leave the scope of a function everything decalred in the function will become garbage. So the value doesn't exist in that memory address now and so the address is 0 (doesn't exist) and if you try to get the value the program won't compile because the value doesn't exist anymore." << endl;
+	cout << "" <<endl;
+	stars();
+	cout<< "" <<endl;
+	cout<< "Problem 12 and 12b test case 1:" <<endl; //Test case 1 for problems 12 and 12b, array of length 10
+	cout<< "" <<endl;
+	cout <<"Test array will be printed: " << endl;
+	cout << "" <<endl;
+	int lengthTstArr1 =10;
+	int tstArr1[lengthTstArr1];
+	for(int v = 0; v < lengthTstArr1; v++){
+		tstArr1[v] = rand() %10 + 1;
+	}
+	arrayPrint(tstArr1,lengthTstArr1);
+	cout << "" << endl;
+	stars();
+	cout <<"" << endl;
+	cout<< "Problem 12 and 12b test case 2:" <<endl; //Test case 2 for problems 12 and 12b, array of length 25
+	cout<< "" <<endl;
+	cout <<"Test array will be printed: " << endl;
+	cout << "" <<endl;
+	int lengthTstArr2 =25;
+	int tstArr2[lengthTstArr2];
+	for(int v = 0; v < lengthTstArr2; v++){
+		tstArr2[v] = rand() %10 + 1;
+	}
+	arrayPrint(tstArr2,lengthTstArr2);
+	cout << "" << endl;
+	stars();
+	cout <<"" << endl;
+	cout<< "Problem 12 and 12b test case 2:" <<endl; //Test case 2 for problems 12 and 12b, array of length 40
+	cout<< "" <<endl;
+	cout <<"Test array will be printed: " << endl;
+	cout << "" <<endl;
+	int lengthTstArr3 =40;
+	int tstArr3[lengthTstArr3];
+	for(int v = 0; v < lengthTstArr3; v++){
+		tstArr3[v] = rand() %10 + 1;
+	}
+	arrayPrint(tstArr3,lengthTstArr3);
+	cout << "" << endl;
+	stars();
+	cout <<"" << endl;
+	stars();
+	cout << "" <<endl;
+	cout <<"Problem 13 :" <<endl;
+	cout << "" <<endl;
+	int lengthNewArray;
+	int highNewArray;
+	int lowNewArray;
+	int *newArray = arrayLengthHighLowGenerator(&lengthNewArray, &highNewArray, &lowNewArray);
+	cout<< "The new modified length for the array is: " << lengthNewArray <<endl;
+	cout << "" << endl;
+	cout<< "The new modified high value (not included) for the array is: " << lengthNewArray <<endl;
+	cout << "" << endl;
+	cout<< "The new modified low value for the array is: " << lengthNewArray <<endl;
+	cout << "" << endl;
+	cout <<"Randomly generate array on the heap:"<<endl;
+	cout << "" << endl;
+	arrayPrint(newArray, lengthNewArray);
+	cout << "" <<endl;
+	stars();
+	cout <<"Problem 14 :" <<endl;
+	cout << "" <<endl;
+	int lengthArrayStack = 25;
+	int *stackArray = arrayOnStack(lengthArrayStack);
+	// arrayPrint(stackArray, lengthArrayStack);
+	// Won't work. The array was on stack, and after we leave the function where the array was created on stack on, that array disappears as it is removed from stack. So when we try to point to the address of the first value of the array, we can'r find it since it does not exist anymore. It has been removed from the stack so no way for us to find it. So to avoid that we create the array on the heap.
+	cout << "Trying to print out the array won't work. The array was on stack, and after we leave the function where the array was created on stack on, that array disappears as it is removed from stack. So when we try to point to the address of the first value of the array, we can'r find it since it does not exist anymore. It has been removed from the stack so no way for us to find it. So to avoid that we create the array on the heap." <<endl;
+	cout << "" <<endl;
+	stars();
+	stars();
+	stars();
+	cout <<"Problem 15 test case 1:" <<endl;
+	cout << "" <<endl;
+	int lengthIntArray1 = 10;
+	int intArray1[lengthIntArray1];
+	for(int e = 0;e < lengthIntArray1; e++){
+		intArray1[e] = rand() % 20;
+	}
+	arrayIntAddress(intArray1, lengthIntArray1);
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout <<"Problem 15 test case 2:" <<endl;
+	cout << "" <<endl;
+	int lengthIntArray2 = 25;
+	int intArray2[lengthIntArray2];
+	for(int e = 0;e < lengthIntArray2; e++){
+		intArray2[e] = rand() % 50;
+	}
+	arrayIntAddress(intArray2, lengthIntArray2);
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout <<"Problem 15 test case 3:" <<endl;
+	cout << "" <<endl;
+	int lengthIntArray3 = 50;
+	int intArray3[lengthIntArray3];
+	for(int e = 0;e < lengthIntArray3; e++){
+		intArray3[e] = rand() % 100;
+	}
+	arrayIntAddress(intArray3, lengthIntArray3);
+	cout << "" <<endl;
+	cout << "" <<endl;
+	stars();
+	stars();
+	stars();
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout <<"Problem 16 test case 1:" <<endl;
+	cout << "" <<endl;
+	cout <<""<<endl;
+	int lengthDoubleArray1 = 10;
+	double doubleArray1[lengthDoubleArray1];
+	for(int e = 0;e < lengthDoubleArray1; e++){
+		doubleArray1[e] = (double)rand()/RAND_MAX * 20;
+	}
+	arrayDoubleAddress(doubleArray1, lengthDoubleArray1);
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout <<"Problem 16 test case 2:" <<endl;
+	cout << "" <<endl;
+	int lengthDoubleArray2 = 25;
+	double doubleArray2[lengthDoubleArray2];
+	for(int e = 0;e < lengthDoubleArray2; e++){
+		doubleArray2[e] = (double)rand()/RAND_MAX * 50;
+	}
+	arrayDoubleAddress(doubleArray2, lengthDoubleArray2);
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout <<"Problem 16 test case 3:" <<endl;
+	cout << "" <<endl;
+	int lengthDoubleArray3 = 50;
+	double doubleArray3[lengthDoubleArray3];
+	for(int e = 0;e < lengthDoubleArray3; e++){
+		doubleArray3[e] = (double)rand()/RAND_MAX * 100;
+	}
+	arrayDoubleAddress(doubleArray3, lengthDoubleArray3);
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	stars();
+	stars();
+	stars();
 	//continue from here
 
 	return 0; // ends main function
 }
 
 int stars(){ //prints out a line of stars to differentiate between different questions
-	cout << "***********************************" << endl; // prints stars
+	cout << "******************************************************************************************************" << endl; // prints stars
 	return 0; //dummy return statement
 }
 
@@ -349,5 +503,58 @@ void arrayRandSelect(int length, int range){ //Problem 10, takes 2 integer param
 		cout <<arr[i]<< ", ";
 	}
 }
+
+int* createVariableStack(){ //Problem 11, takes no input parameters and return an address of a variable declared in the function
+	int x = 3;
+	cout <<"The value of the variable is: " << x <<endl;
+	cout <<"The address of the variable is: " << &x <<endl;
+	return &x;
+}
+
+void arrayPrint(int b[], int length){ //Problem 12, takes two input parameters, an array of integers, and an integer indicating the length of the array in the first input.
+	for(int i = 0; i <length; i++){
+		if (i != length -1){
+		cout<< b[i] << ", ";
+		}
+		else{
+			cout<< b[i] <<endl;
+		}
+	}
+}
+
+int* arrayLengthHighLowGenerator(int *length, int *high, int *low){//Problem 13, takes 3 input parameters using call by pointer. 1st parameter is for lengh of array. Second parameter is for high values in the array. Third parameter is for low value in array. Function returns the generate array.
+	*length = rand() %25 +25;
+	*high = rand()%5 +5;
+	*low = (rand()%5 )*(-1) -5;
+	int *genArray = new int[*length];
+	for(int i =0; i < *length; i++){
+		genArray[i] = rand() % (*high-*low) - *high;
+	}
+	return genArray;
+}
+
+int* arrayOnStack(int length){ //Problem 14, takes one input parameter, the size of the array, and then generates and returns the array.
+	length = rand() %25 +25;
+	int high = rand()%5 +5;
+	int low = (rand()%5 )*(-1) -5;
+	int genArray[length];
+	for(int i =0; i < length; i++){
+		genArray[i] = rand() % (high-low) - high;
+	}
+	return genArray;
+}
+
+void arrayIntAddress(int arr[], int length){ //Problem 15, takes 2 input parameters, an array filled with integers and its size. Returns nothing.
+	for(int i = 0; i <length ;i++){
+		cout << "The address of value #" << i << " in the array is: " << &arr[i] <<". The value at that address is " << arr[i] <<endl;
+	}
+}
+
+void arrayDoubleAddress(double arr[], int length){ //Problem 16, takes 2 input parameters, an array filled with doubles and its size. Returns nothing.
+	for(int i = 0; i <length ;i++){
+		cout << "The address of value #" << i << " in the array is: " << &arr[i] <<". The value at that address is " << arr[i] <<endl;
+	}
+}
+
 //end of lab 2
 

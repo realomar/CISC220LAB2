@@ -1,8 +1,10 @@
 /*
- * CISC220 LAB 2
+ * CISC220-31L LAB 2
  * Debra Yarrington
  *
- * Created on: Sep something, 2018
+ * Created on: Sep 7th, 2018
+ *
+ * TA: Moumita Bhattacharya
  *
  * Authors: omaromar@udel.edu Omar Ahmad
  *  		tamimoz@udel.edu  Ahmad Tamimi
@@ -23,8 +25,12 @@ void plusFour(int x); // function for problem 2
 int randFifty();    // function for problem 3
 void addressCuber(int *a);  // function for problem 4
 void aliasPlus10(int &x); // function for problem 5
-void changeValuePointer(int *x, int *y); //function for problem 6
-void changeCharacters(string &a, string b, string *c); //function for problem 7
+void changeValuePointer(int *x, int *y); // function for problem 6
+void changeCharacters(string &a, string b, string *c); // function for problem 7
+bool swapNumbers8a (int &a, int &b); // function for problem 8a
+void loop20times8b(); //function for problem 8b
+void arrayRandomPrint(int length, int &x); //function for problem 8
+void arrayRandomPrintReverse(int length); //function for problem 9
 
 
 
@@ -97,7 +103,67 @@ int main(){
 	cout << word1 << endl; //spells out chair
 	changeCharacters(character4, character1, &character2);
 	cout << character5 + character4 + character2 + character5 + character3 << endl; //spells out couch
-	
+	cout << "" << endl;
+	stars();
+	cout << "" << endl;
+	cout << "Problem 8a" << endl;
+	cout << "" << endl;
+	int largeNumber = 20;
+	int smallNumber = 5;
+	cout << "The large number is: " << largeNumber << endl;
+	cout << "The small number is: " << smallNumber << endl;
+	swapNumbers8a(largeNumber, smallNumber);
+	cout << "The numbers were swapped, The smallNumber variable now has the value: " << smallNumber << ". The largeNumber variable now has the value: " << largeNumber << endl;
+	cout << "" << endl;
+	stars();
+	cout << "" << endl;
+	cout << "Problem 8b" << endl;
+	cout << "" << endl;
+	loop20times8b();
+	cout << "" << endl;
+	stars();
+	cout << "" << endl;
+	cout << "Problem 8c test case 1:" << endl;
+	cout << "" << endl;
+	int smallestNumber = -1;
+	arrayRandomPrint(10, smallestNumber); //length of array is 10 for the first test case
+	cout << "" << endl;
+	cout << "The variable smallestNumber now is " << smallestNumber << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "Problem 8c test case 2:" << endl;
+	smallestNumber = -1;
+	cout << "" << endl;
+	arrayRandomPrint(30, smallestNumber); //length of array is 30 for the second test case
+	cout << "" << endl;
+	cout << "The variable smallestNumber now is " << smallestNumber << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "Problem 8c test case 3:" << endl;
+	smallestNumber = -1;
+	cout << "" << endl;
+	arrayRandomPrint(50, smallestNumber); //length of array is 50 for the third test case
+	cout << "" << endl;
+	cout << "The variable smallestNumber now is " << smallestNumber << endl;
+	cout << "" << endl;
+	stars();
+	cout << "Problem 9 test case 1:" <<endl;
+	cout << "" << endl;
+	arrayRandomPrintReverse(5); //array of length 5
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "Problem 9 test case 2:" <<endl;
+	cout << "" << endl;
+	arrayRandomPrintReverse(10); //array of length 10
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "Problem 9 test case 3:" <<endl;
+	cout << "" << endl;
+	arrayRandomPrintReverse(15); //array of length 15
+	cout << "" << endl;
+	cout << "" << endl;
 
 	//continue from here
 
@@ -156,6 +222,79 @@ void changeCharacters(string &a, string b, string *c){ //Problem 7, uses call be
 	*c = "u";
 }
 
+bool swapNumbers8a (int &a, int &b){ //Problem 8a, takes two input parameters and uses call by reference. Swaps both numbers if the number in the first parameter is bigger than the one in the second and returns true. Otherwise nothing is swapped and false is returned.
+	int a1 = a;
+	int b1 = b;
+	if (a > b){
+		a = b1;
+		b = a1;
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+void loop20times8b(){ //Problem 8b, takes no parameters, returns nothing,
+	int i;
+	for (i = 0; i < 20; i++){
+		int x = rand() % 26;
+		int y = rand() % 26;
+		cout<< "The 2 numbers are: " << x << ", " << y << endl;
+		if(swapNumbers8a (x,y) == true){
+			cout << "Swapped the 2 numbers: " << x << ", " << y << endl;
+		}
+	}
+}
+
+void arrayRandomPrint(int length, int &x){ //Problem 8, takes 2 input parameters, one is the length, one represents the smallest number in the array and is called by reference. Returns nothing
+	int arr[length];
+	int y;
+	for (int i = 0 ; i<length ; i++){
+		y = rand() % 51;
+		arr[i] = y;
+
+		if(i ==0){
+			x = y;
+			cout << arr[i]<< ", ";
+		}
+		else{
+			cout << arr[i] << ", ";
+			if(y<x){
+				x = y;
+			}
+		}
+	}
+	cout << endl;
+	cout<< "The smallest value in the array is " << x << endl;
+}
+
+void arrayRandomPrintReverse(int length){ //Problem 9, returns nothing, takes one integer input parameter that represents the length of the array.
+	int arr[length];
+	int y;
+	int start = 0;
+	int end = length-1;
+	cout << "The original array: " <<endl;
+	cout << endl;
+	for (int i = 0 ; i<length ; i++){
+		arr[i] = rand() % 51;
+		cout << arr[i]<< ", ";
+	}
+	cout << "" << endl;
+	cout <<"The reversed array: " <<endl;
+	cout << "" << endl;
+	while(start < end){
+		y = arr[start];
+		arr[start] = arr[end];
+		arr[end] = y;
+		cout << arr[start]<< ", ";
+		start++;
+		end--;
+	}
+	for(start; start<length ; start++){
+		cout << arr[start]<< ", ";
+	}
+}
 
 //end of lab 2
 

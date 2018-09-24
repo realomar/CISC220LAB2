@@ -556,5 +556,24 @@ void arrayDoubleAddress(double arr[], int length){ //Problem 16, takes 2 input p
 	}
 }
 
+int * arrayDupeRemover(int arr[], int length){ //Problem 17, takes array and length, removes consecutive duplicates.
+	int newLength = length;
+	for(int i = 1; i < length; i++){
+		if(arr[i] == arr[i-1]){
+			newLength--;
+		}
+	}
+	int returnArray[newLength];
+	int currentIndex = 0;
+	for(int i = 0; i < length; i++){
+		if(arr[i] == arr[i+1]){}
+		else{
+			returnArray[currentIndex] = arr[i];
+			currentIndex++;
+		}
+	}
+	return returnArray;
+}
+
 //end of lab 2
 

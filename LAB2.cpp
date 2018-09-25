@@ -38,7 +38,7 @@ int* arrayLengthHighLowGenerator(int *length, int *high, int *low); //function f
 int* arrayOnStack(int length); //function for problem 14
 void arrayIntAddress(int arr[], int length); //function for problem 15
 void arrayDoubleAddress(double arr[], int length); //function for problem 16
-int* arrayDupeRemover(double arr[], int length); // function for problem 17
+int* arrayDupeRemover(int arr[], int length); // function for problem 17
 int hanningWindow(int arr[], int length); // function for problem 18
 
 int main(){

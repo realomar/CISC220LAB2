@@ -38,6 +38,8 @@ int* arrayLengthHighLowGenerator(int *length, int *high, int *low); //function f
 int* arrayOnStack(int length); //function for problem 14
 void arrayIntAddress(int arr[], int length); //function for problem 15
 void arrayDoubleAddress(double arr[], int length); //function for problem 16
+int* arrayDupeRemover(int arr[], int length); // function for problem 17
+int hanningWindow(int arr[], int length); // function for problem 18
 
 int main(){
 	srand(time(NULL));
@@ -556,5 +558,42 @@ void arrayDoubleAddress(double arr[], int length){ //Problem 16, takes 2 input p
 	}
 }
 
+int* arrayDupeRemover(int arr[], int length){ //Problem 17, takes array and length, removes consecutive duplicates.
+	int newLength = length;
+	for(int i = 1; i < length; i++){
+		if(arr[i] == arr[i-1]){
+			newLength--;
+		}
+	}
+	int returnArray[newLength];
+	int currentIndex = 0;
+	for(int i = 0; i < length; i++){
+		if(arr[i] == arr[i+1]){}
+		else{
+			returnArray[currentIndex] = arr[i];
+			currentIndex++;
+		}
+	}
+	return returnArray;
+}
+
+
+int hanningWindow(int arr[], int length){ // function 18, returns the weighted average of a parameter window of ints.
+	int multiplier = 1;
+	int divisor = 0;
+	int sum = 0;
+	if(length <= 0) return 0;
+	for(int i = 0; i < length; i++){
+		sum += multiplier * arr[i];
+		divisor += multiplier;
+		if(i+1 < length/2){
+			multiplier++;
+		}
+		else
+			multiplier--;
+	}
+
+	return sum / divisor;
+}
 //end of lab 2
 

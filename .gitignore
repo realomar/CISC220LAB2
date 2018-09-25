@@ -34,3 +34,5 @@ Debug/LAB2.o
 Debug/CISC220LAB2.exe
 Debug/LAB2.o
 .settings/language.settings.xml
+.settings/language.settings.xml
+*.xml

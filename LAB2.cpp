@@ -40,6 +40,7 @@ void arrayIntAddress(int arr[], int length); //function for problem 15
 void arrayDoubleAddress(double arr[], int length); //function for problem 16
 int* arrayDupeRemover(int arr[], int length); // function for problem 17
 int hanningWindow(int arr[], int length); // function for problem 18
+int* arrayFilterHanning(int arr[], int length); //function for problem 19
 
 int main(){
 	srand(time(NULL));
@@ -339,6 +340,97 @@ int main(){
 	stars();
 	stars();
 	stars();
+	cout << "" <<endl;
+	cout << "Problem 17 test case 1:" << endl;
+	cout << "" << endl;
+	int prop17tst1 [10] = {2,3,3,7,5,8,8,1,0,0}; //note that the array has 3 numbers that are duplicated, so we will pass in the length 7 in the arrayPrint function below (10-3 = 7)
+	cout << "The original array is:"<<endl;
+	cout << "" << endl;
+	arrayPrint(prop17tst1,10);
+	cout << "" << endl;
+	cout << "The new modified array without duplicates:" << endl;
+	cout << "" << endl;
+	arrayPrint(arrayDupeRemover(prop17tst1,10), 7); //passed a length of 7 because there are 3 duplicates in an array of 10 ints.
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "Problem 17 test case 2:" << endl;
+	cout << "" << endl;
+	int prop17tst2 [15] = {10,3,3,6,9,9,2,4,4,12,12,17,19,19,20}; //note that the array has 5 numbers that are duplicated, so we will pass in the length 10 in the arrayPrint function below (15-5 = 10)
+	cout << "The original array is:"<<endl;
+	cout << "" << endl;
+	arrayPrint(prop17tst2,15);
+	cout << "" << endl;
+	cout << "The new modified array without duplicates:" << endl;
+	cout << "" << endl;
+	arrayPrint(arrayDupeRemover(prop17tst2,15), 10); //passed a length of 7 because there are 3 duplicates in an array of 10 ints.
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "Problem 17 test case 3:" << endl;
+	cout << "" << endl;
+	int prop17tst3 [20] = {100,100,119,243,243,553,583,583,866,993,993,229,432,432,632,743,743,965,234,256}; //note that the array has 6 numbers that are duplicated, so we will pass in the length 14 in the arrayPrint function below (20-6 = 14)
+	cout << "The original array is:"<<endl;
+	cout << "" << endl;
+	arrayPrint(prop17tst3,20);
+	cout << "" << endl;
+	cout << "The new modified array without duplicates:" << endl;
+	cout << "" << endl;
+	arrayPrint(arrayDupeRemover(prop17tst3,20), 14); //passed a length of 7 because there are 3 duplicates in an array of 10 ints.
+	cout << "" << endl;
+	cout << "" << endl;
+	stars();
+	stars();
+	stars();
+	cout << "Problem 18 test case 1:" << endl;
+	cout << "" << endl;
+	cout <<"The array is shown below: (it has a window size of 5)"<<endl;
+	cout <<""<<endl;
+	int prop18tst1 [5] = {3,8,2,5,1};//length of array is 5. So the multipliers will be 1,2,3,2,1 in the order of the elements in the array. Note that below we will multiply the average value by 9 (1+2+3+2+1) to get the weighted value (in the print statement).
+	arrayPrint(prop18tst1,5);
+	cout <<"" <<endl;
+	cout << "The weighted average of the array given is: "<< hanningWindow(prop18tst1, 5) <<endl;
+	cout << "" <<endl;
+	cout << "The weighted value of the array given is: "<< hanningWindow(prop18tst1, 5)*9 <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout << "Problem 18 test case 2:" << endl;
+	cout << "" << endl;
+	cout <<"The array is shown below: (it has a window size of 7)"<<endl;
+	cout <<""<<endl;
+	int prop18tst2 [7] = {5,7,3,4,2,6,2};//length of array is 7. So the multipliers will be 1,2,3,4,3,2,1 in the order of the elements in the array. Note that below we will multiply the average value by 16 (1+2+3+4+3+2+1) to get the weighted value (in the print statement).
+	arrayPrint(prop18tst2,7);
+	cout <<"" <<endl;
+	cout << "The weighted average of the array given is: "<< hanningWindow(prop18tst2, 7) <<endl;
+	cout << "" <<endl;
+	cout << "The weighted value of the array given is : "<< hanningWindow(prop18tst2, 7)*16 <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	cout << "Problem 18 test case 3:" << endl;
+	cout << "" << endl;
+	cout <<"The array is shown below: (it has a window size of 5)"<<endl;
+	cout <<""<<endl;
+	int prop18tst3 [3] = {4,6,8};//length of array is 3. So the multipliers will be 1,2,1 in the order of the elements in the array. Note that below we will multiply the average value by 4 (1+2+1) to get the weighted value (in the print statement).
+	arrayPrint(prop18tst3,3);
+	cout <<"" <<endl;
+	cout << "The weighted average of the array given is: "<< hanningWindow(prop18tst3, 3) <<endl;
+	cout << "" <<endl;
+	cout << "The weighted value of the array given is: "<< hanningWindow(prop18tst3, 3)*4 <<endl;
+	cout << "" <<endl;
+	cout << "" <<endl;
+	stars();
+	stars();
+	stars();
+	cout << "" <<endl;
+	cout << "Problem 19 test case 1:" <<endl;
+	cout <<"" <<endl;
+	int prop19tst1[9] = {3,8,2,5,1,4,6,0,2};
+	cout<<"Original unfiltered array is:" <<endl;
+	cout<<"" <<endl;
+	arrayPrint(prop19tst1,9);
+	cout<<""<<endl;
+	cout<<"Filtered array is:" <<endl;
+	cout<<""<<endl;
+	arrayPrint(arrayFilterHanning(prop19tst1, 9),9);
+
 	//continue from here
 
 	return 0; // ends main function
@@ -558,14 +650,19 @@ void arrayDoubleAddress(double arr[], int length){ //Problem 16, takes 2 input p
 	}
 }
 
-int* arrayDupeRemover(int arr[], int length){ //Problem 17, takes array and length, removes consecutive duplicates.
+int* arrayDupeRemover(int arr[], int length){ //Problem 17, takes an array filled with integer and length, removes consecutive duplicates. Returns the new array
 	int newLength = length;
-	for(int i = 1; i < length; i++){
-		if(arr[i] == arr[i-1]){
-			newLength--;
-		}
+	for(int i = 0; i < length-1 ; i++){
+			if (i =length){
+				if(arr[i] == arr[i+1]){
+					newLength--;
+				}
+			}
+			else if(arr[i] == arr[i+1]){
+				newLength--;
+			}
 	}
-	int returnArray[newLength];
+	int *returnArray = new int[newLength]; //creating an array on the heap
 	int currentIndex = 0;
 	for(int i = 0; i < length; i++){
 		if(arr[i] == arr[i+1]){}
@@ -586,7 +683,7 @@ int hanningWindow(int arr[], int length){ // function 18, returns the weighted a
 	for(int i = 0; i < length; i++){
 		sum += multiplier * arr[i];
 		divisor += multiplier;
-		if(i+1 < length/2){
+		if(i+1 <= ceil(length/2)){
 			multiplier++;
 		}
 		else
@@ -594,6 +691,19 @@ int hanningWindow(int arr[], int length){ // function 18, returns the weighted a
 	}
 
 	return sum / divisor;
+}
+int* arrayFilterHanning(int arr[], int length){//function 19, takes an array of integers and its length as input parameters, returns the filtered array using the hanningWindow function above.
+	int *filteredArray = new int[length]; //we are creating a new array to be stored in the array. We can'r write over the old array, because if we pass in the array in the function, a new copy of the array is made, and after we go out of the function all the changes that we made to the array will be lost. So we have to create a new array on the heap and go from there.
+	int i;
+	for(i=0 ; i<length ; i++){
+		if(i == 0 || i == 1 || i == length-2 || i == length-1 ){ //we are assuming that the window size is 5
+			filteredArray[i] = 0;
+		}
+		else{
+			filteredArray[i] = hanningWindow(&arr[i-2],5);
+		}
+	}
+	return filteredArray;
 }
 //end of lab 2
 

@@ -423,14 +423,39 @@ int main(){
 	cout << "Problem 19 test case 1:" <<endl;
 	cout <<"" <<endl;
 	int prop19tst1[9] = {3,8,2,5,1,4,6,0,2};
-	cout<<"Original unfiltered array is:" <<endl;
+	cout<<"Original unfiltered array #1 is:" <<endl;
 	cout<<"" <<endl;
 	arrayPrint(prop19tst1,9);
 	cout<<""<<endl;
-	cout<<"Filtered array is:" <<endl;
+	cout<<"Filtered array #1 is:" <<endl;
 	cout<<""<<endl;
-	arrayPrint(arrayFilterHanning(prop19tst1, 9),9);
-
+	arrayPrint(arrayFilterHanning(prop19tst1,9),9);
+	cout <<""<<endl;
+	cout <<""<<endl;
+	cout << "Problem 19 test case 2:" <<endl;
+	cout <<"" <<endl;
+	int prop19tst2[11] = {4,5,7,2,3,5,8,3,6,3,5};
+	cout<<"Original unfiltered array #2 is:" <<endl;
+	cout<<"" <<endl;
+	arrayPrint(prop19tst2,11);
+	cout<<""<<endl;
+	cout<<"Filtered array #2 is:" <<endl;
+	cout<<""<<endl;
+	arrayPrint(arrayFilterHanning(prop19tst2,11),11);
+	cout <<""<<endl;
+	cout <<""<<endl;
+	cout << "Problem 19 test case 3:" <<endl;
+	cout <<"" <<endl;
+	int prop19tst3[7] = {4,7,2,3,6,5,6};
+	cout<<"Original unfiltered array #3 is:" <<endl;
+	cout<<"" <<endl;
+	arrayPrint(prop19tst3,7);
+	cout<<""<<endl;
+	cout<<"Filtered array #3 is:" <<endl;
+	cout<<""<<endl;
+	arrayPrint(arrayFilterHanning(prop19tst3,7),7);
+	cout <<""<<endl;
+	cout <<""<<endl;
 	//continue from here
 
 	return 0; // ends main function
@@ -692,15 +717,16 @@ int hanningWindow(int arr[], int length){ // function 18, returns the weighted a
 
 	return sum / divisor;
 }
+
 int* arrayFilterHanning(int arr[], int length){//function 19, takes an array of integers and its length as input parameters, returns the filtered array using the hanningWindow function above.
-	int *filteredArray = new int[length]; //we are creating a new array to be stored in the array. We can'r write over the old array, because if we pass in the array in the function, a new copy of the array is made, and after we go out of the function all the changes that we made to the array will be lost. So we have to create a new array on the heap and go from there.
+	int *filteredArray = new int[length]; //we are creating a new array to be stored in the array. We can't write over the old array, because if we pass in the array in the function, a new copy of the array is made, and after we go out of the function all the changes that we made to the array will be lost. So we have to create a new array on the heap and go from there.
 	int i;
 	for(i=0 ; i<length ; i++){
 		if(i == 0 || i == 1 || i == length-2 || i == length-1 ){ //we are assuming that the window size is 5
 			filteredArray[i] = 0;
 		}
 		else{
-			filteredArray[i] = hanningWindow(&arr[i-2],5);
+			filteredArray[i] = hanningWindow(&arr[i-2],5);//we are passing in &arr[i-2] because e want the weighted average to be the new value of the filter in the middle and since we have a window size of 5 and since we have a hanning window function that starts from the start of the array passed into it, we need to subtract 2 from the position. This is such that the value we are replacing is i the middle of the passed array.
 		}
 	}
 	return filteredArray;

@@ -885,7 +885,7 @@ int** twoDimensionalArray(int *a, int *b){
 	}
 	for(int cols = 0; cols < x; cols++){
 		for(int rows =0; rows < y; rows++){
-			arrayAddresses[cols][rows] = 0;
+			arrayAddresses[rows][cols] = 0;
 		}
 	}
 	//arrayAddresses[x][y] ={};

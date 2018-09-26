@@ -542,15 +542,23 @@ int main(){
 	stars();
 	stars();
 	stars();
+	cout<< "" <<endl;
 	cout <<"Problem 21 test case 1"<<endl;
+	cout <<""<<endl;
+	cout <<"The print out of the matrix is:" <<endl;
 	cout <<""<<endl;
 	int prob21intTst1;
 	int prob21xTst1;
 	int prob21yTst1;
-	/*int** prob21arrayTst1 = twoDimensionalArray(&prob21xTst1 &prob21yTst1);
-	for(prob21intTst1 = 0; prob21intTst1 < prob21xTst1; prob21intTst1++){
-		arrayPrint(prob21arrayTst1[prob21intTst1], prob21yTst1);
-	}*/
+	int** prob21arrayTst1 = twoDimensionalArray(&prob21xTst1, &prob21yTst1);
+	for(prob21intTst1 = 0; prob21intTst1 < prob21yTst1; prob21intTst1++){
+		arrayPrint(prob21arrayTst1[prob21intTst1], prob21xTst1);
+	}
+	cout<< "" <<endl;
+	cout<<"The number of rows in the matrix above is: "<< prob21yTst1 <<endl;
+	cout<<""<<endl;
+	cout<<"The number of columns in the matrix above is: "<<prob21xTst1 <<endl;
+
 	//continue from here
 
 	return 0; // ends main function
@@ -869,28 +877,34 @@ void graphArrayPrint(int arr[], int length, int high, int low){//Problem 20,uses
 int** twoDimensionalArray(int *a, int *b){
 	int x = rand()%5 +5;
 	int y = rand()%4+4;
-	x = *a;
-	y = *b;
-	int **arrayAddresses = new int*[y];
-	for(int i =0; i < y; i++){
-		arrayAddresses[i] = new int[x];
+	*a=x;
+	*b=y;
+	int **arrayAddresses = new int*[x];
+	for(int i =0; i < x; i++){
+		arrayAddresses[i] = new int[y];
 	}
-	std::fill(arrayAddresses[0], arrayAddresses[0] + x * y, 0); //fill the arrays with 0's.
-	int i;
+	for(int cols = 0; cols < x; cols++){
+		for(int rows =0; rows < y; rows++){
+			arrayAddresses[cols][rows] = 0;
+		}
+	}
+	//arrayAddresses[x][y] ={};
+	//std::fill(arrayAddresses[0], arrayAddresses[0] + x * y, 0); //fill the arrays with 0's.
+	int trav;
 	int xRand;
 	int yRand;
-	for(i = 0; i <5; i++){
+	for(trav = 0; trav <5; trav++){
 		xRand = rand() %x;
 		yRand = rand() %y;
 		if (arrayAddresses[xRand][yRand] == 1){
-			i-= 1;
+			trav-= 1;
 		}
 		else{
-			arrayAddresses[xRand][yRand] == 1; //statement has no effect? Check what it means
+			arrayAddresses[xRand][yRand] = 1;
 		}
 	}
 	return arrayAddresses;
-	//Make sure that there isn’t already a 1 in that location (and if there is generate a new x and y random number set). I didn't put that in yet.
+
 	//continue from here
 }
 //end of lab 2

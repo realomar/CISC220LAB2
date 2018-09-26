@@ -20,28 +20,51 @@
 using namespace std;
 
 int stars(); //stars function
+
 void addressDemo();   // function for problem 1
+
 void plusFour(int x); // function for problem 2
+
 int randFifty();    // function for problem 3
+
 void addressCuber(int *a);  // function for problem 4
+
 void aliasPlus10(int &x); // function for problem 5
+
 void changeValuePointer(int *x, int *y); // function for problem 6
+
 void changeCharacters(string &a, string b, string *c); // function for problem 7
+
 bool swapNumbers8a (int &a, int &b); // function for problem 8a
+
 void loop20times8b(); //function for problem 8b
+
 void arrayRandomPrint(int length, int &x); //function for problem 8
+
 void arrayRandomPrintReverse(int length); //function for problem 9
+
 void arrayRandSelect(int length, int range); //function for problem 10
+
 int* createVariableStack(); //function for problem 11
+
 void arrayPrint(int b[], int length); //function for problem 12
+
 int* arrayLengthHighLowGenerator(int *length, int *high, int *low); //function for problem 13
+
 int* arrayOnStack(int length); //function for problem 14
+
 void arrayIntAddress(int arr[], int length); //function for problem 15
+
 void arrayDoubleAddress(double arr[], int length); //function for problem 16
+
 int* arrayDupeRemover(int arr[], int length); // function for problem 17
+
 int hanningWindow(int arr[], int length); // function for problem 18
+
 int* arrayFilterHanning(int arr[], int length); //function for problem 19
+
 void graphArrayPrint(int arr[], int length, int high, int low); //function for problem 20
+
 int** twoDimensionalArray(int *a, int *b); //function for problem 21
 
 int main(){
@@ -545,7 +568,7 @@ int main(){
 	cout<< "" <<endl;
 	cout <<"Problem 21 test case 1"<<endl;
 	cout <<""<<endl;
-	cout <<"The print out of the matrix is:" <<endl;
+	cout <<"The print out of the matrix for the first test case is:" <<endl;
 	cout <<""<<endl;
 	int prob21intTst1;
 	int prob21xTst1;
@@ -555,11 +578,56 @@ int main(){
 		arrayPrint(prob21arrayTst1[prob21intTst1], prob21xTst1);
 	}
 	cout<< "" <<endl;
-	cout<<"The number of rows in the matrix above is: "<< prob21yTst1 <<endl;
+	cout<<"The number of rows in the matrix (1st test case) above is: "<< prob21yTst1 <<endl;
 	cout<<""<<endl;
-	cout<<"The number of columns in the matrix above is: "<<prob21xTst1 <<endl;
+	cout<<"The number of columns in the matrix (1st test case) above is: "<<prob21xTst1 <<endl;
+	cout <<""<<endl;
+	cout <<""<<endl;
+	cout<<""<<endl;
+	cout <<"Problem 21 test case 2"<<endl;
+	cout <<""<<endl;
+	cout <<"The print out of the matrix for the second test case is:" <<endl;
+	cout <<""<<endl;
+	int prob21intTst2;
+	int prob21xTst2;
+	int prob21yTst2;
+	int** prob21arrayTst2 = twoDimensionalArray(&prob21xTst2, &prob21yTst2);
+	for(prob21intTst2 = 0; prob21intTst2 < prob21yTst2; prob21intTst2++){
+		arrayPrint(prob21arrayTst2[prob21intTst2], prob21xTst2);
+	}
+	cout<< "" <<endl;
+	cout<<"The number of rows in the matrix (2nd test case) above is: "<< prob21yTst2 <<endl;
+	cout<<""<<endl;
+	cout<<"The number of columns in the matrix (2nd test case) above is: "<<prob21xTst2 <<endl;
+	cout <<""<<endl;
+	cout <<""<<endl;
+	cout<<""<<endl;
+	cout <<"Problem 21 test case 3"<<endl;
+	cout <<""<<endl;
+	cout <<"The print out of the matrix for the third test case is:" <<endl;
+	cout <<""<<endl;
+	int prob21intTst3;
+	int prob21xTst3;
+	int prob21yTst3;
+	int** prob21arrayTst3 = twoDimensionalArray(&prob21xTst3, &prob21yTst3);
+	for(prob21intTst3 = 0; prob21intTst3 < prob21yTst3; prob21intTst3++){
+		arrayPrint(prob21arrayTst3[prob21intTst3], prob21xTst3);
+	}
+	cout<< "" <<endl;
+	cout<<"The number of rows in the matrix (3rd test case) above is: "<< prob21yTst3 <<endl;
+	cout<<""<<endl;
+	cout<<"The number of columns in the matrix (3rd test case) above is: "<<prob21xTst3 <<endl;
+	cout <<""<<endl;
+	cout <<""<<endl;
+	cout<<""<<endl;
+	stars();
+	stars();
+	stars();
+	stars();
+	stars();
+	cout <<""<<endl;
+	cout<<"end of lab 2"<<endl;
 
-	//continue from here
 
 	return 0; // ends main function
 }
@@ -874,7 +942,7 @@ void graphArrayPrint(int arr[], int length, int high, int low){//Problem 20,uses
 	}
 }
 
-int** twoDimensionalArray(int *a, int *b){
+int** twoDimensionalArray(int *a, int *b){//problem 21, takes two input parameters as integers using call by pointer, returns a multi-dimensional array. Uses a nested for loop to generate that array
 	int x = rand()%5 +5;
 	int y = rand()%4+4;
 	*a=x;
@@ -897,7 +965,7 @@ int** twoDimensionalArray(int *a, int *b){
 		xRand = rand() %x;
 		yRand = rand() %y;
 		if (arrayAddresses[xRand][yRand] == 1){
-			trav-= 1;
+			trav-= 1; //ignore these random value sets, do nothing with them , and generate new ones (as it exits the for loops and executes it again)
 		}
 		else{
 			arrayAddresses[xRand][yRand] = 1;

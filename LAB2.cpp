@@ -961,11 +961,16 @@ int** twoDimensionalArray(int *a, int *b){//problem 21, takes two input paramete
 	int trav;
 	int xRand;
 	int yRand;
+	int xRand2;
+	int yRand2;
 	for(trav = 0; trav <5; trav++){
 		xRand = rand() %x;
 		yRand = rand() %y;
 		if (arrayAddresses[xRand][yRand] == 1){
-			trav-= 1; //ignore these random value sets, do nothing with them , and generate new ones (as it exits the for loops and executes it again)
+			xRand2 = rand() %x;
+			yRand2 = rand() %y;
+			arrayAddresses[xRand2][yRand2] =1;
+			//ignore these random value sets, do nothing with them , and generate new ones (as it exits the for loops and executes it again)
 		}
 		else{
 			arrayAddresses[xRand][yRand] = 1;

@@ -542,6 +542,15 @@ int main(){
 	stars();
 	stars();
 	stars();
+	cout <<"Problem 21 test case 1"<<endl;
+	cout <<""<<endl;
+	int prob21intTst1;
+	int prob21xTst1;
+	int prob21yTst1;
+	/*int** prob21arrayTst1 = twoDimensionalArray(&prob21xTst1 &prob21yTst1);
+	for(prob21intTst1 = 0; prob21intTst1 < prob21xTst1; prob21intTst1++){
+		arrayPrint(prob21arrayTst1[prob21intTst1], prob21yTst1);
+	}*/
 	//continue from here
 
 	return 0; // ends main function
@@ -866,7 +875,23 @@ int** twoDimensionalArray(int *a, int *b){
 	for(int i =0; i < y; i++){
 		arrayAddresses[i] = new int[x];
 	}
-	std::fill(arrayAddresses[0], arrayAddresses[0] + x * y, 0); //fill the arrays with 0's. Not sure about this tho.
+	std::fill(arrayAddresses[0], arrayAddresses[0] + x * y, 0); //fill the arrays with 0's.
+	int i;
+	int xRand;
+	int yRand;
+	for(i = 0; i <5; i++){
+		xRand = rand() %x;
+		yRand = rand() %y;
+		if (arrayAddresses[xRand][yRand] == 1){
+			i= -1;
+			break;
+		}
+		else{
+			arrayAddresses[xRand][yRand] == 1; //statement has no effect? Check what it means
+		}
+	}
+	return arrayAddresses;
+	//Make sure that there isn’t already a 1 in that location (and if there is generate a new x and y random number set). I didn't put that in yet.
 	//continue from here
 }
 //end of lab 2

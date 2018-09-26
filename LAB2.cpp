@@ -883,8 +883,7 @@ int** twoDimensionalArray(int *a, int *b){
 		xRand = rand() %x;
 		yRand = rand() %y;
 		if (arrayAddresses[xRand][yRand] == 1){
-			i= -1;
-			break;
+			i-= 1;
 		}
 		else{
 			arrayAddresses[xRand][yRand] == 1; //statement has no effect? Check what it means
